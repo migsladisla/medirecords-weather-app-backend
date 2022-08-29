@@ -1,4 +1,4 @@
-# MediRecords Weather App Backend
+# Getting Started with MediRecords Weather Spring Boot App
 
 Minimal [Spring Boot](http://projects.spring.io/spring-boot/) sample app.
 
@@ -18,3 +18,7 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 ```shell
 mvn spring-boot:run
 ```
+
+## 3rd party API integration
+
+For the API integration, I used [OpenWeather](https://openweathermap.org/)'s free API. I created REST endpoints in Spring in which acts as the middleware to fetch data with [OkHttpClient](https://javadoc.io/static/com.squareup.okhttp3/okhttp/3.14.9/okhttp3/OkHttpClient.html).
