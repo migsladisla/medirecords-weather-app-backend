@@ -13,7 +13,6 @@ import com.medirecords.weather.validators.ApiKey;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/weather")
-@CrossOrigin(origins = "https://medirecords-weather-frontend.herokuapp.com/")
 public class WeatherController {
 
     private final OpenWeatherService openWeatherService;
