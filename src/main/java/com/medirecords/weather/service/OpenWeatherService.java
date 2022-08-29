@@ -3,6 +3,7 @@ package com.medirecords.weather.service;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.medirecords.weather.dtos.CityWeatherDto;
+import com.medirecords.weather.dtos.ForecastDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
@@ -17,6 +18,10 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RequiredArgsConstructor
 public class OpenWeatherService {
+
+    private static final int DEFAULT_DAYS = 7;
+    private static final boolean INCLUDE_AIR_QUALITY_DATA = true;
+
     public CityWeatherDto callOpenWeatherByCityNameApi(String cityName, String apiKey) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.MINUTES)
@@ -26,9 +31,11 @@ public class OpenWeatherService {
 
         CityWeatherDto cityWeatherDto = null;
         Request request = new Request.Builder()
-                .url("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + apiKey)
+                .url("http://api.weatherapi.com/v1/forecast.json?key=" + apiKey + "&q=" + cityName + "&days=" + DEFAULT_DAYS + "&aqi=" + INCLUDE_AIR_QUALITY_DATA)
                 .get()
                 .build();
+
+        log.info("Making {} request to {}", request.method(), request.url());
 
         try {
             Response response = client.newCall(request).execute();
@@ -37,7 +44,6 @@ public class OpenWeatherService {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                 cityWeatherDto = mapper.readValue(weatherData, CityWeatherDto.class);
-                cityWeatherDto.setCity(cityName);
                 cityWeatherDto.setResponseStatus("success");
             } else {
                 cityWeatherDto = CityWeatherDto.builder().build();

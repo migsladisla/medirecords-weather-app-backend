@@ -10,15 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CityWeatherDto {
-    private String city;
-    private Integer timezone;
-    private Integer visibility;
-    private CityCoordinatesDto coord;
-    private CityWeatherDetailsDto[] weather;
-    private CityWeatherMainDto main;
-    private CityWindDto wind;
-    private CityCloudsDto clouds;
-    private CityDetailsDto sys;
+    private LocationDto location;
+    private CurrentDto current;
+    private ForecastDto forecast;
     private String responseStatus;
     private String exception;
 }
