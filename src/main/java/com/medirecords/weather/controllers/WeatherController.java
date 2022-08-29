@@ -9,10 +9,11 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 import com.medirecords.weather.validators.ApiKey;
 
-@RestController
 @Slf4j
-@RequestMapping("/api/v1/weather")
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/weather")
+@CrossOrigin(origins = "https://medirecords-weather-frontend.herokuapp.com/")
 public class WeatherController {
 
     private final OpenWeatherService openWeatherService;
