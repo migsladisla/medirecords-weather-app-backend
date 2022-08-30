@@ -21,4 +21,4 @@ mvn spring-boot:run
 
 ## 3rd party API integration
 
-For the API integration, I used [OpenWeather](https://openweathermap.org/)'s free API. I created REST endpoints in Spring in which acts as the middleware to fetch data with [OkHttpClient](https://javadoc.io/static/com.squareup.okhttp3/okhttp/3.14.9/okhttp3/OkHttpClient.html).
+I used [WeatherAPI](https://www.weatherapi.com/api-explorer.aspx#forecast)'s free weather forecast API. I created REST endpoints in Spring that acts as the middleware to fetch data. I used [OkHttpClient](https://javadoc.io/static/com.squareup.okhttp3/okhttp/3.14.9/okhttp3/OkHttpClient.html) for sending HTTP requests.
