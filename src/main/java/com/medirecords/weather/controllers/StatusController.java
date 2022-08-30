@@ -15,4 +15,9 @@ public class StatusController {
     public ResponseEntity<String> getHealthCheckStatus() {
         return new ResponseEntity<String>("UP", HttpStatus.valueOf(200));
     }
+
+    @GetMapping("/version")
+    public ResponseEntity<String> getApiVersion() {
+        return new ResponseEntity<String>("The current version is 1.0.0", HttpStatus.valueOf(200));
+    }
 }
